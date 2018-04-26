@@ -1,0 +1,36 @@
+{
+  "name": "inerciacreativa/wp-video-fixer",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "description": "Soluciona problemas al insertar vídeos de EiTB, DIPC y IAA",
+  "homepage": "https://github.com/inerciacreativa/wp-video-fixer",
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "wordpress-plugin"
+  ],
+  "authors": [
+    {
+      "name": "José Cuesta",
+      "email": "jose.cuesta@inerciacreativa.com",
+      "homepage": "https://inerciacreativa.com/",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "composer/installers": "^1.5",
+    "inerciacreativa/wp-framework": "1.0"
+  },
+  "config": {
+    "vendor-dir": "vendor"
+  },
+  "extra": {
+    "installer-name": "ic-video-fixer"
+  },
+  "autoload": {
+    "psr-4": {
+      "ic\\Plugin\\VideoFixer\\": "source/"
+    }
+  }
+}
