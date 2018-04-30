@@ -25,9 +25,11 @@ class Frontend extends PluginClass
 	/**
 	 * @inheritdoc
 	 */
-	protected function onCreation()
+	protected function configure(): void
 	{
-		$this->setHook()->on('the_content', 'fixVideos');
+		parent::configure();
+
+		$this->hook()->on('the_content', 'fixVideos');
 	}
 
 	/**

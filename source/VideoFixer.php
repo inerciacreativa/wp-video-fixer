@@ -12,8 +12,10 @@ use ic\Framework\Plugin\Plugin;
 class VideoFixer extends Plugin
 {
 
-	protected function onCreation()
+	protected function configure(): void
 	{
+		parent::configure();
+
 		$this->setOptions([]);
 	}
 
