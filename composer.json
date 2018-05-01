@@ -17,10 +17,16 @@
       "role": "Developer"
     }
   ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/inerciacreativa/wp-framework"
+    }
+  ],
   "require": {
     "php": ">=7.1",
     "composer/installers": "^1.5",
-    "inerciacreativa/wp-framework": "2.0"
+    "inerciacreativa/wp-framework": "^2.0"
   },
   "config": {
     "vendor-dir": "vendor"
