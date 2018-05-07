@@ -48,7 +48,7 @@ class EiTBFixer extends AbstractFixer implements FixerInterface
 
 			if ($embed) {
 				if ($info['type'] === 'video') {
-					$video  = $this->getVideo($dom, $embed->FILE_MP4, $embed->IMAGENEMBED);
+					$video  = $this->getVideo($dom, $embed->FILE_MP4, $this->addScheme($embed->IMAGENEMBED));
 					$figure = $this->getFigure($dom, $video, $embed->TITULO, $embed->URL);
 				} else {
 					$audio  = $this->getAudio($dom, $embed->URL_AUDIO);
@@ -66,6 +66,19 @@ class EiTBFixer extends AbstractFixer implements FixerInterface
 		}
 
 		return $dom;
+	}
+
+	/**
+	 * @param string $url
+	 * @param string $scheme
+	 *
+	 * @return string
+	 */
+	protected function addScheme(string $url, string $scheme = 'http://'): string
+	{
+		$url = ltrim($url, '/');
+
+		return parse_url($url, PHP_URL_SCHEME) === null ? $scheme . $url : $url;
 	}
 
 	/**
