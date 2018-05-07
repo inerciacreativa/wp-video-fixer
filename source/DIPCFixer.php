@@ -34,6 +34,10 @@ class DIPCFixer extends AbstractFixer implements FixerInterface
 
 			wp_parse_str($element->getAttribute('flashvars'), $info);
 
+			if (!isset($info['file'], $info['image'])) {
+				continue;
+			}
+
 			$video  = $this->getVideo($dom, $info['file'], $info['image']);
 			$figure = $this->getFigure($dom, $video);
 
