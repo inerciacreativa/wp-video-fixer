@@ -39,6 +39,10 @@ class Frontend extends PluginClass
 	 */
 	protected function fixVideos(string $content): string
 	{
+		if (empty($content)) {
+			return $content;
+		}
+
 		$applyFixers = [];
 
 		foreach ($this->videoFixers as $fixer) {
