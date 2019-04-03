@@ -2,8 +2,8 @@
 
 namespace ic\Plugin\VideoFixer;
 
-use ic\Framework\Html\Document;
-use ic\Framework\Html\Element;
+use ic\Framework\Dom\Document;
+use ic\Framework\Dom\Element;
 
 /**
  * Class EiTBFixer
@@ -42,7 +42,7 @@ class EiTBFixer extends AbstractFixer implements FixerInterface
 			$info  = $this->getUrlInfo($url);
 			$embed = null;
 
-			if (\count($info) === 2) {
+			if (count($info) === 2) {
 				$embed = $this->getEmbedInfo($info);
 			}
 
@@ -111,9 +111,9 @@ class EiTBFixer extends AbstractFixer implements FixerInterface
 	/**
 	 * @param array $info
 	 *
-	 * @return null|\stdClass
+	 * @return null|object
 	 */
-	protected function getEmbedInfo(array $info): ?\stdClass
+	protected function getEmbedInfo(array $info): ?object
 	{
 		$query = self::QUERY . self::$parameters[$info['type']];
 		$query = str_replace(['%ID%', '%TYPE%'], [
@@ -121,21 +121,28 @@ class EiTBFixer extends AbstractFixer implements FixerInterface
 			$info['type'],
 		], $query);
 
-		$request = [
-			'user-agent' => 'ic HTTP/2.0',
-			'sslverify'  => false,
-			'headers'    => ['Accept-Encoding' => 'gzip'],
-			'cookies'    => [],
-			'body'       => null,
-		];
+		$result = get_transient($query);
 
-		$response = wp_remote_request($this->url($query), $request);
+		if ($result === false) {
+			$result  = 'null';
+			$request = [
+				'user-agent' => 'ic HTTP/2.0',
+				'sslverify'  => false,
+				'headers'    => ['Accept-Encoding' => 'gzip'],
+				'cookies'    => [],
+				'body'       => null,
+			];
 
-		if (wp_remote_retrieve_response_code($response) !== 200) {
-			return null;
+			$response = wp_remote_request($this->url($query), $request);
+
+			if (wp_remote_retrieve_response_code($response) === 200) {
+				$result = json_decode(wp_remote_retrieve_body($response));
+			}
+
+			set_transient($query, $result, DAY_IN_SECONDS);
 		}
 
-		return json_decode(wp_remote_retrieve_body($response));
+		return $result === 'null' ? null : $result;
 	}
 
 }
