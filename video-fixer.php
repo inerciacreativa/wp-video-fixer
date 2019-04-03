@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ic Video Fixer
  * Plugin URI:  https://github.com/inerciacreativa/wp-video-fixer
- * Version:     2.0.3
+ * Version:     2.1.0
  * Text Domain: ic-video-fixer
  * Domain Path: /languages
  * Description: Soluciona problemas al insertar vídeos de EiTB, DIPC y IAA.
