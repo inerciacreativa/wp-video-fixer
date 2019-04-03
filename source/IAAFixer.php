@@ -2,8 +2,8 @@
 
 namespace ic\Plugin\VideoFixer;
 
-use ic\Framework\Html\Document;
-use ic\Framework\Html\Element;
+use ic\Framework\Dom\Document;
+use ic\Framework\Dom\Element;
 
 /**
  * Class IAAFixer

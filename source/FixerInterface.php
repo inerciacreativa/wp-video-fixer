@@ -2,7 +2,7 @@
 
 namespace ic\Plugin\VideoFixer;
 
-use ic\Framework\Html\Document;
+use ic\Framework\Dom\Document;
 
 /**
  * Interface FixerInterface
