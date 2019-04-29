@@ -5,18 +5,11 @@ namespace ic\Plugin\VideoFixer;
 use ic\Framework\Plugin\Plugin;
 
 /**
- * Class EiTBVideos
+ * Class VideoFixer
  *
- * @package ic\Plugin\EiTBVideos
+ * @package ic\Plugin\VideoFixer
  */
 class VideoFixer extends Plugin
 {
-
-	protected function configure(): void
-	{
-		parent::configure();
-
-		$this->setOptions([]);
-	}
 
 }

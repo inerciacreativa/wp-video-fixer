@@ -136,7 +136,7 @@ class EiTBFixer extends AbstractFixer implements FixerInterface
 			$response = wp_remote_request($this->url($query), $request);
 
 			if (wp_remote_retrieve_response_code($response) === 200) {
-				$result = json_decode(wp_remote_retrieve_body($response));
+				$result = json_decode(wp_remote_retrieve_body($response), false);
 			}
 
 			set_transient($query, $result, DAY_IN_SECONDS);
