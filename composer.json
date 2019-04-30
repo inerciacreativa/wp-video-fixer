@@ -13,49 +13,19 @@
     {
       "name": "José Cuesta",
       "email": "jose.cuesta@inerciacreativa.com",
-      "homepage": "https://inerciacreativa.com/",
+      "homepage": "https://inerciacreativa.com",
       "role": "Developer"
-    }
-  ],
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/inerciacreativa/wp-framework"
     }
   ],
   "require": {
     "php": ">=7.2",
-    "composer/installers": "^1.5",
-    "inerciacreativa/wp-framework": "^4.0"
+    "composer/installers": "^1.5"
   },
   "config": {
     "vendor-dir": "vendor"
   },
   "extra": {
-    "installer-name": "ic-video-fixer",
-    "wordpress-install-dir": "www/wp",
-    "installer-paths": {
-      "www/app/mu-plugins/{$name}/": [
-        "type:wordpress-muplugin"
-      ],
-      "www/app/plugins/{$name}/": [
-        "type:wordpress-plugin"
-      ],
-      "www/app/themes/{$name}/": [
-        "type:wordpress-theme"
-      ]
-    },
-    "dropin-paths": {
-      "www/app/languages/": [
-        "vendor:koodimonni-language"
-      ],
-      "www/app/languages/plugins/": [
-        "vendor:koodimonni-plugin-language"
-      ],
-      "www/app/languages/themes/": [
-        "vendor:koodimonni-theme-language"
-      ]
-    }
+    "installer-name": "ic-video-fixer"
   },
   "autoload": {
     "psr-4": {
